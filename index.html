@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MaiShop – Sacs et chaussures pour femmes</title>
+    <meta name="description" content="MaiShop : la boutique en ligne de sacs et chaussures tendance pour femmes. Livraison à Abidjan et Côte d'Ivoire.">
+    <style>
+        *{margin:0;padding:0;box-sizing:border-box}
+        body{font-family:'Segoe UI',Arial,sans-serif;background:#f8fafc;color:#1a1a2e}
+        .container{max-width:1100px;margin:0 auto;padding:0 20px}
+        
+        /* ===== NAVBAR ===== */
+        .navbar{background:#fff;padding:16px 0;border-bottom:1px solid #e2e8f0;position:sticky;top:0;z-index:100}
+        .navbar .container{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap}
+        .logo{font-size:1.8rem;font-weight:900;color:#1a4d8c;text-decoration:none}
+        .logo span{color:#d97706}
+        .nav-links{display:flex;gap:1.5rem;list-style:none}
+        .nav-links a{text-decoration:none;color:#475569;font-weight:600;font-size:0.95rem}
+        .nav-links a:hover{color:#1a4d8c}
+        .nav-links .btn-nav{background:#1a4d8c;color:#fff;padding:8px 20px;border-radius:50px}
+        .nav-links .btn-nav:hover{background:#0f3a6b}
+        .menu-toggle{display:none;flex-direction:column;gap:4px;background:0;border:0;cursor:pointer}
+        .menu-toggle span{width:25px;height:2.5px;background:#1a1a2e;border-radius:2px}
+        
+        /* ===== HERO ===== */
+        .hero{text-align:center;padding:50px 0 30px}
+        .hero h1{font-size:2.8rem;font-weight:900;color:#1a1a2e}
+        .hero h1 span{color:#1a4d8c}
+        .hero p{color:#64748b;font-size:1.1rem;margin:0.8rem 0 1.5rem}
+        .hero .btn{display:inline-block;padding:12px 32px;background:#1a4d8c;color:#fff;border-radius:50px;text-decoration:none;font-weight:700;box-shadow:0 4px 12px rgba(26,77,140,0.25)}
+        .hero .btn:hover{background:#0f3a6b}
+        
+        /* ===== PRODUITS ===== */
+        .products{padding:40px 0}
+        .products h2{text-align:center;font-size:2rem;margin-bottom:2rem}
+        .products-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:2rem}
+        .product-card{background:#fff;border-radius:16px;padding:1rem;box-shadow:0 4px 6px rgba(0,0,0,0.04);transition:transform 0.2s;text-align:center}
+        .product-card:hover{transform:translateY(-4px)}
+        .product-card img{width:100%;height:220px;object-fit:cover;border-radius:12px;background:#f1f5f9}
+        .product-card h3{font-size:1.1rem;margin:0.8rem 0 0.3rem;color:#1a1a2e}
+        .product-card .price{color:#1a4d8c;font-weight:700;font-size:1.2rem}
+        .product-card .btn{display:block;padding:10px;background:#1a4d8c;color:#fff;border-radius:50px;text-decoration:none;font-weight:600;margin-top:0.8rem}
+        .product-card .btn:hover{background:#0f3a6b}
+        
+        /* ===== CTA WHATSAPP ===== */
+        .whatsapp-cta{background:#f1f5f9;padding:40px 0;text-align:center}
+        .whatsapp-cta h2{font-size:1.8rem;margin-bottom:0.5rem}
+        .whatsapp-cta p{color:#64748b;margin-bottom:1rem}
+        .whatsapp-btn{display:inline-block;padding:14px 32px;background:#25d366;color:#fff;border-radius:50px;text-decoration:none;font-weight:700;font-size:1.1rem;box-shadow:0 4px 12px rgba(37,211,102,0.3)}
+        .whatsapp-btn:hover{background:#1da851}
+        
+        /* ===== CONTACT ===== */
+        .contact{background:#fff;padding:40px 0}
+        .contact h2{text-align:center;font-size:2rem;margin-bottom:1rem}
+        .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:2rem;max-width:800px;margin:0 auto}
+        .contact-info{background:#f8fafc;padding:1.5rem;border-radius:12px}
+        .contact-info p{margin:0.5rem 0;font-size:1rem}
+        .contact-info strong{color:#1a1a2e}
+        
+        /* ===== FOOTER ===== */
+        .footer{background:#0f172a;color:#94a3b8;padding:30px 0;text-align:center}
+        .footer a{color:#94a3b8;text-decoration:none;margin:0 1rem}
+        .footer a:hover{color:#fff}
+        
+        /* ===== RESPONSIVE ===== */
+        @media(max-width:768px){
+            .menu-toggle{display:flex}
+            .nav-links{display:none;flex-direction:column;gap:0.8rem;width:100%;padding:1rem 0}
+            .nav-links.open{display:flex}
+            .hero h1{font-size:2rem}
+            .products-grid{grid-template-columns:1fr 1fr}
+            .contact-grid{grid-template-columns:1fr}
+        }
+        @media(max-width:480px){
+            .products-grid{grid-template-columns:1fr}
+            .hero h1{font-size:1.6rem}
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ===== NAVIGATION ===== -->
+    <nav class="navbar">
+        <div class="container">
+            <a href="#" class="logo">Mai<span>Shop</span></a>
+            <button class="menu-toggle" id="menuToggle"><span></span><span></span><span></span></button>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#">Accueil</a></li>
+                <li><a href="#catalogue">Catalogue</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <li><a href="https://wa.me/2250707164098" class="btn-nav">WhatsApp</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- ===== HERO ===== -->
+    <section class="hero">
+        <div class="container">
+            <h1>Les sacs tendance <span>pour femmes</span></h1>
+            <p>Style, qualité et confort. Livraison à Abidjan et dans toute la Côte d'Ivoire.</p>
+            <a href="#catalogue" class="btn">Voir la collection</a>
+        </div>
+    </section>
+
+    <!-- ===== CATALOGUE ===== -->
+    <section class="products" id="catalogue">
+        <div class="container">
+            <h2>Nos sacs et chaussures</h2>
+            <div class="products-grid" id="productsGrid">
+                <!-- Les produits seront injectés via JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== CTA WHATSAPP ===== -->
+    <section class="whatsapp-cta" id="contact">
+        <div class="container">
+            <h2>Vous voulez commander ?</h2>
+            <p>Contactez-nous sur WhatsApp pour toute demande.</p>
+            <a href="https://wa.me/2250707164098" class="whatsapp-btn">💬 Commandez maintenant</a>
+        </div>
+    </section>
+
+    <!-- ===== CONTACT ===== -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <h2>Contactez-nous</h2>
+            <div class="contact-grid">
+                <div class="contact-info">
+                    <p><strong>📍 Adresse :</strong></p>
+                    <p>Abidjan, Abobo PK 18, Carrefour Koffi Jean</p>
+                    <p><strong>📞 Téléphone :</strong></p>
+                    <p>+225 07 07 16 40 98</p>
+                </div>
+                <div class="contact-info">
+                    <p><strong>🕐 Horaires :</strong></p>
+                    <p>Lun - Sam : 09:00 - 18:00</p>
+                    <p><strong>📦 Livraison :</strong></p>
+                    <p>Abidjan et toute la Côte d'Ivoire</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== FOOTER ===== -->
+    <footer class="footer">
+        <div class="container">
+            <p>© 2025 MaiShop – Tous droits réservés</p>
+            <p>
+                <a href="#">Accueil</a>
+                <a href="https://wa.me/2250707164098">WhatsApp</a>
+                <a href="#">Livraison</a>
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        // ===== PRODUITS =====
+        const produits = [
+            { nom: "Sac à main en cuir", prix: "25 000 FCFA", img: "https://images.unsplash.com/photo-1584917865442-de89df76afd3?w=300&h=300&fit=crop&crop=center" },
+            { nom: "Sac à dos chic", prix: "18 000 FCFA", img: "https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=300&h=300&fit=crop&crop=center" },
+            { nom: "Pochette en cuir", prix: "12 000 FCFA", img: "https://images.unsplash.com/photo-1566150905458-1bf1fc113f0d?w=300&h=300&fit=crop&crop=center" },
+            { nom: "Sac seau", prix: "22 000 FCFA", img: "https://images.unsplash.com/photo-1548036328-c9fa89d128fa?w=300&h=300&fit=crop&crop=center" },
+            { nom: "Tote bag en toile", prix: "8 000 FCFA", img: "https://images.unsplash.com/photo-1544816155-12df9643f363?w=300&h=300&fit=crop&crop=center" },
+            { nom: "Baskets blanches", prix: "20 000 FCFA", img: "https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=300&h=300&fit=crop&crop=center" }
+        ];
+
+        const grid = document.getElementById('productsGrid');
+        produits.forEach(p => {
+            const card = document.createElement('div');
+            card.className = 'product-card';
+            card.innerHTML = `
+                <img src="${p.img}" alt="${p.nom}" loading="lazy">
+                <h3>${p.nom}</h3>
+                <div class="price">${p.prix}</div>
+                <a href="https://wa.me/2250707164098?text=Je%20veux%20commander%20:%20${encodeURIComponent(p.nom)}" class="btn">Commander</a>
+            `;
+            grid.appendChild(card);
+        });
+
+        // ===== MENU MOBILE =====
+        const toggle = document.getElementById('menuToggle');
+        const links = document.getElementById('navLinks');
+        if (toggle) {
+            toggle.addEventListener('click', function() {
+                links.classList.toggle('open');
+            });
+        }
+    </script>
+
+</body>
+</html>
