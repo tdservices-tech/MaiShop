@@ -2,85 +2,162 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MaiShop – Sacs tendance pour femmes</title>
-    <meta name="description" content="MaiShop : la boutique en ligne de sacs tendance pour femmes. Livraison à Abidjan et Côte d'Ivoire.">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+    <title>MaiShop – Sacs et accessoires tendance pour femmes</title>
+    <meta name="description" content="MaiShop : boutique en ligne de sacs tendance pour femmes à Abidjan. Sacs à main, pochettes, tote bags. Livraison à Abidjan et Côte d'Ivoire.">
+    <link rel="canonical" href="https://tdservices-tech.github.io/MaiShop/">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="MaiShop – Sacs tendance pour femmes">
+    <meta property="og:description" content="Découvrez notre collection de sacs tendance. Livraison à Abidjan et Côte d'Ivoire.">
+    <meta property="og:image" content="https://raw.githubusercontent.com/tdservices-tech/MaiShop/refs/heads/main/images/sac-fashion-maishop.jpg">
+    <meta property="og:url" content="https://tdservices-tech.github.io/MaiShop/">
+    <meta property="og:type" content="website">
+
     <style>
-        /* ===== RESET ===== */
-        * {
+        /* ===== RESET & BASE ===== */
+        *,
+        *::before,
+        *::after {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-        body {
-            font-family: 'Segoe UI', Arial, sans-serif;
-            background: #f8fafc;
-            color: #1a1a2e;
+
+        :root {
+            --primary: #e84393;
+            --primary-dark: #d63384;
+            --primary-light: #fce4ec;
+            --secondary: #fd79a8;
+            --accent: #feca57;
+            --accent-light: #fff8e0;
+            --dark: #2d3436;
+            --gray-100: #f8f9fa;
+            --gray-200: #e9ecef;
+            --gray-300: #dee2e6;
+            --gray-400: #ced4da;
+            --gray-500: #adb5bd;
+            --gray-600: #6c757d;
+            --white: #ffffff;
+            --shadow: 0 8px 30px rgba(0, 0, 0, 0.06);
+            --shadow-hover: 0 12px 40px rgba(232, 67, 147, 0.12);
+            --radius: 20px;
+            --radius-sm: 12px;
+            --radius-full: 9999px;
+            --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
+
+        html {
+            font-size: 16px;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: var(--gray-100);
+            color: var(--dark);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
         .container {
-            max-width: 1100px;
+            max-width: 1200px;
             margin: 0 auto;
             padding: 0 20px;
         }
 
-        /* ===== NAVBAR ===== */
+        /* ===== NAVIGATION ===== */
         .navbar {
             background: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
-            border-bottom: 1px solid rgba(232, 67, 147, 0.12);
+            border-bottom: 1px solid rgba(232, 67, 147, 0.08);
             padding: 14px 0;
             position: sticky;
             top: 0;
             z-index: 100;
         }
+
         .navbar .container {
             display: flex;
             justify-content: space-between;
             align-items: center;
             flex-wrap: wrap;
         }
+
         .logo {
             font-size: 1.5rem;
             font-weight: 900;
-            color: #1a1a2e;
+            color: var(--dark);
             text-decoration: none;
+            letter-spacing: -0.5px;
         }
+
         .logo span {
-            color: #e84393;
+            color: var(--primary);
         }
+
+        .logo .dot {
+            color: var(--accent);
+        }
+
         .nav-links {
             display: flex;
             gap: 1.5rem;
-            list-style: none;
             align-items: center;
+            list-style: none;
         }
+
         .nav-links a {
             text-decoration: none;
-            color: #475569;
+            color: var(--gray-600);
             font-weight: 600;
             font-size: 0.9rem;
-            transition: 0.3s;
+            transition: var(--transition);
+            position: relative;
         }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary);
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
         .nav-links a:hover {
-            color: #e84393;
+            color: var(--primary);
         }
+
         .nav-btn {
-            background: #e84393;
-            color: #fff;
+            background: var(--primary);
+            color: var(--white);
             padding: 8px 22px;
-            border-radius: 50px;
+            border-radius: var(--radius-full);
             font-weight: 700;
             font-size: 0.85rem;
-            transition: 0.3s;
+            transition: var(--transition);
             box-shadow: 0 4px 16px rgba(232, 67, 147, 0.25);
         }
+
+        .nav-btn::after {
+            display: none !important;
+        }
+
         .nav-btn:hover {
-            background: #d63384;
+            background: var(--primary-dark);
             transform: translateY(-2px);
             box-shadow: 0 6px 24px rgba(232, 67, 147, 0.35);
-            color: #fff;
+            color: var(--white);
         }
+
         .menu-toggle {
             display: none;
             flex-direction: column;
@@ -90,13 +167,14 @@
             border: none;
             padding: 4px;
         }
+
         .menu-toggle span {
             display: block;
             width: 24px;
             height: 2.5px;
-            background: #1a1a2e;
+            background: var(--dark);
             border-radius: 2px;
-            transition: 0.3s;
+            transition: var(--transition);
         }
 
         /* ===== HERO ===== */
@@ -104,221 +182,469 @@
             padding: 60px 0 50px;
             background: linear-gradient(160deg, #fce4ec, #ffffff);
             text-align: center;
+            position: relative;
+            overflow: hidden;
         }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -30%;
+            right: -20%;
+            width: 60%;
+            height: 80%;
+            background: radial-gradient(circle, rgba(232, 67, 147, 0.04), transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+
+        .hero .container {
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            background: var(--accent-light);
+            color: var(--accent);
+            padding: 4px 16px;
+            border-radius: var(--radius-full);
+            font-size: 0.7rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 1rem;
+        }
+
         .hero h1 {
-            font-size: clamp(2.5rem, 6vw, 4rem);
+            font-size: clamp(2.8rem, 8vw, 4.5rem);
             font-weight: 900;
-            color: #1a1a2e;
-            letter-spacing: -1px;
+            line-height: 1.05;
+            color: var(--dark);
+            letter-spacing: -2px;
         }
-        .hero h1 span {
-            background: linear-gradient(135deg, #e84393, #fd79a8);
+
+        .hero h1 .highlight {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
         }
-        .hero p {
-            color: #64748b;
-            font-size: 1.1rem;
-            margin: 0.8rem 0 1.5rem;
+
+        .hero .subtitle {
+            font-size: clamp(1rem, 1.2vw, 1.2rem);
+            color: var(--gray-600);
+            max-width: 500px;
+            margin: 0.5rem auto 1.5rem;
         }
-        .hero .btn {
-            display: inline-block;
-            padding: 12px 32px;
-            background: linear-gradient(135deg, #e84393, #d63384);
-            color: #fff;
-            border-radius: 50px;
+
+        .hero .subtitle span {
+            color: var(--primary);
+            font-weight: 600;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 14px 36px;
+            background: var(--primary);
+            color: var(--white);
+            border-radius: var(--radius-full);
             text-decoration: none;
             font-weight: 700;
-            box-shadow: 0 4px 16px rgba(232, 67, 147, 0.3);
-            transition: 0.3s;
+            font-size: 1rem;
+            transition: var(--transition);
+            box-shadow: 0 8px 28px rgba(232, 67, 147, 0.3);
         }
-        .hero .btn:hover {
+
+        .btn-primary:hover {
+            background: var(--primary-dark);
             transform: translateY(-3px);
-            box-shadow: 0 8px 28px rgba(232, 67, 147, 0.4);
+            box-shadow: 0 12px 36px rgba(232, 67, 147, 0.4);
+        }
+
+        .btn-secondary {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 14px 36px;
+            background: var(--white);
+            color: var(--dark);
+            border: 2px solid var(--gray-300);
+            border-radius: var(--radius-full);
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1rem;
+            transition: var(--transition);
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--primary);
+            color: var(--primary);
+            transform: translateY(-3px);
+        }
+
+        /* ===== CATEGORIES ===== */
+        .categories {
+            padding: 40px 0;
+            background: var(--white);
+        }
+
+        .categories-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .category-card {
+            background: var(--gray-100);
+            border-radius: var(--radius-sm);
+            padding: 1.5rem;
+            text-align: center;
+            transition: var(--transition);
+            border: 1px solid var(--gray-200);
+        }
+
+        .category-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-hover);
+            border-color: var(--primary);
+        }
+
+        .category-card .icon {
+            font-size: 2.5rem;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .category-card h3 {
+            font-size: 1rem;
+            color: var(--dark);
+        }
+
+        .category-card p {
+            font-size: 0.85rem;
+            color: var(--gray-600);
         }
 
         /* ===== PRODUITS ===== */
         .products {
-            padding: 40px 0;
-            background: #fff;
+            padding: 50px 0;
+            background: var(--white);
         }
-        .products h2 {
+
+        .section-title {
+            font-size: clamp(1.8rem, 3vw, 2.4rem);
+            font-weight: 900;
             text-align: center;
-            font-size: 2rem;
-            margin-bottom: 2rem;
+            margin-bottom: 0.5rem;
+            color: var(--dark);
         }
-        .products h2 span {
-            color: #e84393;
+
+        .section-title span {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
+
+        .section-subtitle {
+            text-align: center;
+            color: var(--gray-600);
+            font-size: 1rem;
+            max-width: 500px;
+            margin: 0 auto 2.5rem;
+        }
+
         .products-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
+            gap: 1.8rem;
         }
+
         .product-card {
-            background: #fff;
-            border-radius: 16px;
-            padding: 1rem;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.04);
-            transition: 0.3s;
+            background: var(--white);
+            border-radius: var(--radius);
+            padding: 1.2rem;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
             text-align: center;
-            border: 1px solid #f0e8ec;
+            border: 1px solid var(--gray-200);
+            position: relative;
+            overflow: hidden;
         }
+
+        .product-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary), var(--accent));
+            opacity: 0;
+            transition: var(--transition);
+        }
+
+        .product-card:hover::before {
+            opacity: 1;
+        }
+
         .product-card:hover {
-            transform: translateY(-6px);
-            box-shadow: 0 8px 30px rgba(232, 67, 147, 0.12);
-            border-color: rgba(232, 67, 147, 0.2);
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-hover);
+            border-color: rgba(232, 67, 147, 0.15);
         }
-        .product-card img {
+
+        .product-card .image-wrapper {
+            position: relative;
+            overflow: hidden;
+            border-radius: var(--radius-sm);
+            background: var(--gray-100);
+        }
+
+        .product-card .image-wrapper img {
             width: 100%;
-            height: 220px;
+            height: 260px;
             object-fit: cover;
-            border-radius: 12px;
-            background: #f1f5f9;
+            transition: var(--transition);
+            display: block;
         }
+
+        .product-card:hover .image-wrapper img {
+            transform: scale(1.03);
+        }
+
+        .product-card .badge {
+            position: absolute;
+            top: 12px;
+            left: 12px;
+            background: var(--primary);
+            color: var(--white);
+            padding: 4px 14px;
+            border-radius: var(--radius-full);
+            font-size: 0.65rem;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+
         .product-card h3 {
             font-size: 1.1rem;
-            margin: 0.8rem 0 0.3rem;
-        }
-        .product-card .price {
-            color: #e84393;
             font-weight: 700;
-            font-size: 1.2rem;
+            margin: 0.8rem 0 0.2rem;
+            color: var(--dark);
+        }
+
+        .product-card .price {
+            font-size: 1.3rem;
+            font-weight: 800;
+            color: var(--primary);
             display: block;
             margin-bottom: 0.8rem;
         }
-        .product-card .price .old {
-            color: #94a3b8;
-            font-size: 0.9rem;
-            text-decoration: line-through;
-            font-weight: 400;
-            margin-left: 0.5rem;
-        }
+
         .product-card .btn {
             display: block;
-            padding: 10px;
-            background: #e84393;
-            color: #fff;
-            border-radius: 50px;
+            width: 100%;
+            padding: 12px;
+            background: var(--primary);
+            color: var(--white);
+            border: none;
+            border-radius: var(--radius-full);
+            font-weight: 700;
+            font-size: 0.95rem;
+            cursor: pointer;
             text-decoration: none;
-            font-weight: 600;
-            transition: 0.3s;
+            transition: var(--transition);
         }
+
         .product-card .btn:hover {
-            background: #d63384;
+            background: var(--primary-dark);
             transform: translateY(-2px);
             box-shadow: 0 4px 16px rgba(232, 67, 147, 0.3);
         }
-        .product-card .badge {
-            display: inline-block;
-            background: #e84393;
-            color: #fff;
-            padding: 2px 14px;
-            border-radius: 50px;
-            font-size: 0.7rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            margin-top: 0.5rem;
+
+        /* ===== POURQUOI CHOISIR ===== */
+        .why {
+            padding: 50px 0;
+            background: var(--gray-100);
         }
 
-        /* ===== CTA WHATSAPP ===== */
+        .why-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-top: 1.5rem;
+        }
+
+        .why-card {
+            background: var(--white);
+            border-radius: var(--radius);
+            padding: 2rem;
+            text-align: center;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        .why-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .why-card .icon {
+            font-size: 2.5rem;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .why-card h3 {
+            font-size: 1.1rem;
+            margin-bottom: 0.3rem;
+        }
+
+        .why-card p {
+            font-size: 0.9rem;
+            color: var(--gray-600);
+        }
+
+        /* ===== WHATSAPP CTA ===== */
         .whatsapp-cta {
-            padding: 40px 0;
-            background: #fce4ec;
+            padding: 50px 0;
+            background: linear-gradient(160deg, #fce4ec, #ffffff);
             text-align: center;
         }
+
         .whatsapp-cta h2 {
-            font-size: 1.8rem;
+            font-size: clamp(1.6rem, 2.8vw, 2.2rem);
+            font-weight: 900;
         }
+
         .whatsapp-cta p {
-            color: #64748b;
-            margin-bottom: 1rem;
+            color: var(--gray-600);
+            margin: 0.5rem 0 1.5rem;
         }
+
         .whatsapp-btn {
-            display: inline-block;
-            padding: 14px 32px;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.6rem;
+            padding: 16px 40px;
             background: #25d366;
-            color: #fff;
-            border-radius: 50px;
+            color: var(--white);
+            border: none;
+            border-radius: var(--radius-full);
             text-decoration: none;
             font-weight: 700;
             font-size: 1.1rem;
-            box-shadow: 0 4px 16px rgba(37, 211, 102, 0.3);
-            transition: 0.3s;
+            transition: var(--transition);
+            box-shadow: 0 8px 28px rgba(37, 211, 102, 0.3);
         }
+
         .whatsapp-btn:hover {
             background: #1da851;
             transform: translateY(-3px);
-            box-shadow: 0 8px 28px rgba(37, 211, 102, 0.4);
+            box-shadow: 0 12px 36px rgba(37, 211, 102, 0.4);
         }
 
         /* ===== CONTACT ===== */
         .contact {
-            padding: 40px 0;
-            background: #fff;
+            padding: 50px 0;
+            background: var(--white);
         }
+
         .contact-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 2rem;
-            max-width: 800px;
+            max-width: 900px;
             margin: 0 auto;
         }
+
         .contact-card {
-            background: #f8fafc;
+            background: var(--gray-100);
+            border-radius: var(--radius);
             padding: 1.5rem;
-            border-radius: 12px;
             text-align: center;
-            border: 1px solid #e9ecef;
-            transition: 0.3s;
+            transition: var(--transition);
+            border: 1px solid var(--gray-200);
         }
+
         .contact-card:hover {
             transform: translateY(-4px);
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+            box-shadow: var(--shadow-hover);
         }
+
         .contact-card .icon {
             font-size: 2rem;
             display: block;
             margin-bottom: 0.3rem;
         }
+
         .contact-card h4 {
             font-size: 1rem;
             margin-bottom: 0.2rem;
         }
+
         .contact-card p,
         .contact-card a {
-            color: #64748b;
+            color: var(--gray-600);
             text-decoration: none;
             font-size: 0.9rem;
         }
+
         .contact-card a:hover {
-            color: #e84393;
+            color: var(--primary);
         }
 
         /* ===== FOOTER ===== */
         .footer {
-            background: #0f172a;
-            color: #94a3b8;
-            padding: 30px 0;
+            background: var(--dark);
+            color: var(--gray-500);
+            padding: 30px 0 20px;
             text-align: center;
         }
+
+        .footer .logo {
+            color: var(--white);
+        }
+
+        .footer .logo span {
+            color: var(--primary);
+        }
+
+        .footer p {
+            font-size: 0.85rem;
+            margin-top: 0.5rem;
+        }
+
         .footer a {
-            color: #94a3b8;
+            color: var(--gray-500);
             text-decoration: none;
             margin: 0 0.8rem;
             font-size: 0.85rem;
-            transition: 0.3s;
+            transition: var(--transition);
         }
+
         .footer a:hover {
-            color: #fff;
+            color: var(--white);
         }
+
         .footer-social {
             display: flex;
             justify-content: center;
             gap: 1rem;
             margin-top: 0.8rem;
         }
+
         .footer-social a {
             display: inline-flex;
             align-items: center;
@@ -326,15 +652,16 @@
             width: 38px;
             height: 38px;
             background: rgba(255, 255, 255, 0.05);
-            border-radius: 50%;
-            color: #94a3b8;
+            border-radius: var(--radius-full);
+            color: var(--gray-500);
             font-size: 1rem;
-            transition: 0.3s;
+            transition: var(--transition);
             margin: 0;
         }
+
         .footer-social a:hover {
-            background: #e84393;
-            color: #fff;
+            background: var(--primary);
+            color: var(--white);
             transform: translateY(-3px);
         }
 
@@ -343,6 +670,7 @@
             .menu-toggle {
                 display: flex;
             }
+
             .nav-links {
                 display: none;
                 flex-direction: column;
@@ -351,106 +679,154 @@
                 width: 100%;
                 align-items: flex-start;
             }
+
             .nav-links.open {
                 display: flex;
             }
-            .contact-grid {
-                grid-template-columns: 1fr;
+
+            .navbar .container {
+                flex-wrap: wrap;
             }
+
+            .hero {
+                padding: 40px 0 30px;
+            }
+
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+
             .products-grid {
                 grid-template-columns: 1fr 1fr;
                 gap: 1rem;
             }
-            .product-card img {
-                height: 180px;
+
+            .product-card .image-wrapper img {
+                height: 200px;
             }
-        }
-        @media (max-width: 480px) {
-            .products-grid {
+
+            .contact-grid {
                 grid-template-columns: 1fr;
             }
-            .product-card img {
-                height: 220px;
-            }
-            .hero h1 {
-                font-size: 1.8rem;
-            }
+
+            .hero-buttons .btn,
             .whatsapp-btn {
                 width: 100%;
                 max-width: 280px;
+                justify-content: center;
             }
-            .hero .btn {
-                width: 100%;
-                max-width: 280px;
+
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .categories-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 0 14px;
+            }
+
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+
+            .products-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .product-card .image-wrapper img {
+                height: 240px;
+            }
+
+            .logo {
+                font-size: 1.3rem;
+            }
+
+            .section-title {
+                font-size: 1.5rem;
+            }
+
+            .categories-grid {
+                grid-template-columns: 1fr;
             }
         }
 
         /* ===== DARK MODE ===== */
         @media (prefers-color-scheme: dark) {
-            body {
-                background: #0f172a;
-                color: #f0f0f0;
+            :root {
+                --white: #1a1a2e;
+                --gray-100: #16213e;
+                --gray-200: #1e2a4a;
+                --gray-300: #2a3a5a;
+                --gray-400: #3a4a6a;
+                --gray-500: #7a8aaa;
+                --gray-600: #9aaaba;
+                --dark: #f0f0f0;
+                --shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+                --shadow-hover: 0 12px 40px rgba(0, 0, 0, 0.4);
             }
+
             .navbar {
-                background: rgba(15, 23, 42, 0.95);
+                background: rgba(26, 26, 46, 0.95);
                 border-bottom: 1px solid rgba(255, 255, 255, 0.05);
             }
-            .logo {
-                color: #f0f0f0;
-            }
+
             .hero {
-                background: linear-gradient(160deg, #1a1a2e, #0f172a);
+                background: linear-gradient(160deg, #1a1a2e, #16213e);
             }
-            .hero h1 {
-                color: #f0f0f0;
-            }
-            .hero p {
-                color: #94a3b8;
-            }
+
             .products {
-                background: #0f172a;
+                background: var(--gray-100);
             }
+
             .product-card {
-                background: #1e293b;
-                border-color: #334155;
+                background: var(--white);
+                border-color: var(--gray-200);
             }
-            .product-card h3 {
-                color: #f0f0f0;
-            }
-            .product-card .price {
-                color: #fd79a8;
-            }
-            .product-card .price .old {
-                color: #64748b;
-            }
-            .whatsapp-cta {
-                background: #1a1a2e;
-            }
-            .whatsapp-cta h2 {
-                color: #f0f0f0;
-            }
-            .whatsapp-cta p {
-                color: #94a3b8;
-            }
+
             .contact {
-                background: #0f172a;
+                background: var(--gray-100);
             }
+
             .contact-card {
-                background: #1e293b;
-                border-color: #334155;
+                background: var(--white);
+                border-color: var(--gray-200);
             }
-            .contact-card h4 {
-                color: #f0f0f0;
+
+            .whatsapp-cta {
+                background: linear-gradient(160deg, #1a1a2e, #16213e);
             }
-            .contact-card p,
-            .contact-card a {
-                color: #94a3b8;
-            }
-            .contact-card a:hover {
-                color: #fd79a8;
-            }
+
             .footer {
-                background: #0a0f1a;
+                background: #0a0a1a;
+            }
+
+            .btn-secondary {
+                background: transparent;
+                border-color: var(--gray-300);
+                color: var(--gray-600);
+            }
+
+            .btn-secondary:hover {
+                border-color: var(--primary);
+                color: var(--primary);
+            }
+        }
+
+        /* ===== ACCESSIBILITÉ ===== */
+        @media (prefers-reduced-motion: reduce) {
+
+            *,
+            *::before,
+            *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
             }
         }
     </style>
@@ -461,8 +837,14 @@
     <!-- ===== NAVIGATION ===== -->
     <nav class="navbar">
         <div class="container">
-            <a href="#" class="logo">Mai<span>Shop</span></a>
-            <button class="menu-toggle" id="menuToggle"><span></span><span></span><span></span></button>
+            <a href="#" class="logo">Mai<span>Shop</span><span class="dot">.</span></a>
+
+            <button class="menu-toggle" id="menuToggle" aria-label="Menu" aria-expanded="false">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
             <ul class="nav-links" id="navLinks">
                 <li><a href="#catalogue">Catalogue</a></li>
                 <li><a href="#contact">Contact</a></li>
@@ -474,35 +856,104 @@
     <!-- ===== HERO ===== -->
     <section class="hero">
         <div class="container">
-            <h1>Les sacs tendance <span>pour femmes</span></h1>
-            <p>Style, qualité et confort. Livraison à Abidjan et dans toute la Côte d'Ivoire.</p>
-            <a href="#catalogue" class="btn">Voir la collection</a>
-        </div>
-    </section>
-
-    <!-- ===== CATALOGUE AVEC VOS 10 PHOTOS ===== -->
-    <section class="products" id="catalogue">
-        <div class="container">
-            <h2>Nos <span>sacs</span></h2>
-            <div class="products-grid" id="productsGrid">
-                <!-- Les produits sont générés par JavaScript -->
+            <span class="hero-badge">✨ Nouvelle collection 2025</span>
+            <h1>
+                <span class="highlight">MaiShop</span>
+            </h1>
+            <p class="subtitle">
+                <span>Sacs &amp; accessoires</span> tendance pour femmes.<br>
+                Élégance, qualité et style à chaque pas.
+            </p>
+            <div class="hero-buttons">
+                <a href="#catalogue" class="btn-primary">🛍️ Voir la collection</a>
+                <a href="https://wa.me/2250505228532" class="btn-secondary">💬 WhatsApp</a>
             </div>
         </div>
     </section>
 
-    <!-- ===== CTA WHATSAPP ===== -->
+    <!-- ===== CATÉGORIES ===== -->
+    <section class="categories">
+        <div class="container">
+            <h2 class="section-title">Nos <span>catégories</span></h2>
+            <div class="categories-grid">
+                <div class="category-card">
+                    <span class="icon">👜</span>
+                    <h3>Sacs à main</h3>
+                    <p>Élégance au quotidien</p>
+                </div>
+                <div class="category-card">
+                    <span class="icon">🎒</span>
+                    <h3>Sacs à dos</h3>
+                    <p>Style et confort</p>
+                </div>
+                <div class="category-card">
+                    <span class="icon">👛</span>
+                    <h3>Pochettes</h3>
+                    <p>Pour toutes vos soirées</p>
+                </div>
+                <div class="category-card">
+                    <span class="icon">🛍️</span>
+                    <h3>Tote bags</h3>
+                    <p>Pratiques et tendance</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== CATALOGUE ===== -->
+    <section class="products" id="catalogue">
+        <div class="container">
+            <h2 class="section-title">Nos <span>sacs</span></h2>
+            <p class="section-subtitle">Chaque modèle est sélectionné avec soin pour vous.</p>
+            <div class="products-grid" id="productsGrid">
+                <!-- Généré par JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== POURQUOI CHOISIR ===== -->
+    <section class="why">
+        <div class="container">
+            <h2 class="section-title">Pourquoi choisir <span>MaiShop</span> ?</h2>
+            <div class="why-grid">
+                <div class="why-card">
+                    <span class="icon">🌟</span>
+                    <h3>Qualité</h3>
+                    <p>Des produits sélectionnés pour leur durabilité.</p>
+                </div>
+                <div class="why-card">
+                    <span class="icon">🚚</span>
+                    <h3>Livraison rapide</h3>
+                    <p>Reçue en 24-48h à Abidjan.</p>
+                </div>
+                <div class="why-card">
+                    <span class="icon">💬</span>
+                    <h3>Service client</h3>
+                    <p>Réponse rapide sur WhatsApp.</p>
+                </div>
+                <div class="why-card">
+                    <span class="icon">🛡️</span>
+                    <h3>Retour facile</h3>
+                    <p>Échange sous 7 jours.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== WHATSAPP CTA ===== -->
     <section class="whatsapp-cta">
         <div class="container">
             <h2>Vous voulez commander ?</h2>
-            <p>Contactez-nous sur WhatsApp pour toute demande.</p>
-            <a href="https://wa.me/2250505228532" class="whatsapp-btn">💬 Commandez maintenant</a>
+            <p>Contactez-nous sur WhatsApp pour toute demande ou commande.</p>
+            <a href="https://wa.me/2250505228532" class="whatsapp-btn">💬 Commander sur WhatsApp</a>
         </div>
     </section>
 
     <!-- ===== CONTACT ===== -->
     <section class="contact" id="contact">
         <div class="container">
-            <h2 style="text-align:center;margin-bottom:1.5rem;">Contactez-nous</h2>
+            <h2 class="section-title">📍 Nous <span>trouver</span></h2>
+            <p class="section-subtitle">Retrouvez MaiShop à Abidjan, Abobo PK 18, Carrefour Koffi Jean.</p>
             <div class="contact-grid">
                 <div class="contact-card">
                     <span class="icon">📍</span>
@@ -512,7 +963,7 @@
                 </div>
                 <div class="contact-card">
                     <span class="icon">📞</span>
-                    <h4>Téléphone</h4>
+                    <h4>Téléphone / WhatsApp</h4>
                     <a href="https://wa.me/2250505228532">+225 05 05 22 85 32</a>
                 </div>
                 <div class="contact-card">
@@ -525,7 +976,7 @@
                     <span class="icon">📦</span>
                     <h4>Livraison</h4>
                     <p>Abidjan et toute la Côte d'Ivoire</p>
-                    <p>Délais : 24-48 heures</p>
+                    <p>Délais : 24-48h</p>
                 </div>
             </div>
         </div>
@@ -534,122 +985,213 @@
     <!-- ===== FOOTER ===== -->
     <footer class="footer">
         <div class="container">
+            <a href="#" class="logo">Mai<span>Shop</span><span class="dot">.</span></a>
             <p>© 2025 MaiShop – Tous droits réservés</p>
             <p>
                 <a href="#">Accueil</a>
                 <a href="#catalogue">Catalogue</a>
                 <a href="#contact">Contact</a>
+                <a href="#">Politique de confidentialité</a>
             </p>
             <div class="footer-social">
-                <a href="https://wa.me/2250505228532" target="_blank"><i class="fab fa-whatsapp"></i></a>
-                <a href="#" target="_blank"><i class="fab fa-instagram"></i></a>
-                <a href="#" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                <a href="https://www.facebook.com/share/1DwdTThFmV/" target="_blank" aria-label="Facebook">
+                    <i class="fab fa-facebook-f"></i>
+                </a>
+                <a href="#" target="_blank" aria-label="Instagram">
+                    <i class="fab fa-instagram"></i>
+                </a>
+                <a href="https://wa.me/2250505228532" target="_blank" aria-label="WhatsApp">
+                    <i class="fab fa-whatsapp"></i>
+                </a>
             </div>
         </div>
     </footer>
 
+    <!-- ===== FONTAWESOME ===== -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
+    <!-- ===== JAVASCRIPT ===== -->
     <script>
-        // ===== 10 PRODUITS AVEC VOS PHOTOS =====
-        const produits = [{
-            nom: "Sac Beige",
-            prix: "7 000 FCFA",
-            ancienPrix: null,
-            image: "https://i.ibb.co/BV16h1WM/sac-beige.jpg",
-            badge: null
-        }, {
-            nom: "Sac Blanc & Noir",
-            prix: "8 000 FCFA",
-            ancienPrix: null,
-            image: "https://i.ibb.co/kgFqQH3F/sac-blancnoir.jpg",
-            badge: null
-        }, {
-            nom: "Sac Gris",
-            prix: "9 000 FCFA",
-            ancienPrix: "12 000 FCFA",
-            image: "https://i.ibb.co/Ljk74rb/sac-gris.jpg",
-            badge: "Promo"
-        }, {
-            nom: "Sac Gris 2",
-            prix: "10 000 FCFA",
-            ancienPrix: null,
-            image: "https://i.ibb.co/99wJJpMK/sac-gris2.jpg",
-            badge: null
-        }, {
-            nom: "Sac R&B",
-            prix: "12 000 FCFA",
-            ancienPrix: "15 000 FCFA",
-            image: "https://i.ibb.co/8nH0DbrW/sac-rnb.jpg",
-            badge: "Promo"
-        }, {
-            nom: "Sac Rose",
-            prix: "11 000 FCFA",
-            ancienPrix: null,
-            image: "https://i.ibb.co/7d1R8J8r/sac-rose.jpg",
-            badge: null
-        }, {
-            nom: "Sac Rouge",
-            prix: "13 000 FCFA",
-            ancienPrix: null,
-            image: "https://i.ibb.co/PsVGhYQV/sac-rouge.jpg",
-            badge: null
-        }, {
-            nom: "Sac Rouge 2",
-            prix: "14 000 FCFA",
-            ancienPrix: null,
-            image: "https://i.ibb.co/W42ZPhyL/sac-rouge1.jpg",
-            badge: null
-        }, {
-            nom: "Sac Rouge & Blanc",
-            prix: "15 000 FCFA",
-            ancienPrix: null,
-            image: "https://i.ibb.co/VctSZrFw/sac-rougeblanc.jpg",
-            badge: null
-        }, {
-            nom: "Sac 3",
-            prix: "8 000 FCFA",
-            ancienPrix: null,
-            image: "https://i.ibb.co/4g0yfLS8/sac3.jpg",
-            badge: null
-        }];
+        (function() {
+            'use strict';
 
-        const grid = document.getElementById('productsGrid');
+            // ===== PRODUITS (20 PHOTOS AVEC PRIX) =====
+            const produits = [
 
-        produits.forEach(p => {
-            const card = document.createElement('div');
-            card.className = 'product-card';
+                // Sacs avec prix
+                {
+                    nom: "Sac Beige",
+                    prix: "14 000 FCFA",
+                    image: "https://raw.githubusercontent.com/tdservices-tech/MaiShop/refs/heads/main/images/sac-beige-maishop.jpg",
+                    badge: null
+                },
+                {
+                    nom: "Sac Beige 1",
+                    prix: "14 000 FCFA",
+                    image: "https://raw.githubusercontent.com/tdservices-tech/MaiShop/refs/heads/main/images/sac-beige1-maishop.jpg",
+                    badge: null
+                },
+                {
+                    nom: "Sac Blanc & Noir",
+                    prix: "15 000 FCFA",
+                    image: "https://raw.githubusercontent.com/tdservices-tech/MaiShop/refs/heads/main/images/sac-blanc-noir-maishop.jpg",
+                    badge: null
+                },
+                {
+                    nom: "Sac Bordeaux",
+                    prix: "15 000 FCFA",
+                    image: "https://raw.githubusercontent.com/tdservices-tech/MaiShop/refs/heads/main/images/sac-bordeaux-maishop.jpg",
+                    badge: null
+                },
+                {
+                    nom: "Sac Chocolate",
+                    prix: "14 000 FCFA",
+                    image: "https://raw.githubusercontent.com/tdservices-tech/MaiShop/refs/heads/main/images/sac-chocolate-maishop.jpg",
+                    badge: null
+                },
+                {
+                    nom: "Sac Fashion",
+                    prix: "14 000 FCFA",
+                    image: "https://raw.githubusercontent.com/tdservices-tech/MaiShop/refs/heads/main/images/sac-fashion-maishop.jpg",
+                    badge: "Tendance"
+                },
+                {
+                    nom: "Sac Jaune",
+                    prix: "14 000 FCFA",
+                    image: "https://raw.githubusercontent.com/tdservices-tech/MaiShop/refs/heads/main/images/sac-jaune-maishop.jpg",
+                    badge: null
+                },
+                {
+                    nom: "Sac Marron",
+                    prix: "15 000 FCFA",
+                    image: "https://raw.githubusercontent.com/tdservices-tech/MaiShop/refs/heads/main/images/sac-marron-maishop.jpg",
+                    badge: null
+                },
+                {
+                    nom: "Sac Marron Clair",
+                    prix: "15 000 FCFA",
+                    image: "https://raw.githubusercontent.com/tdservices-tech/MaiShop/refs/heads/main/images/sac-marron-clair-maishop.jpg",
+                    badge: null
+                },
+                {
+                    nom: "Sac Noir",
+                    prix: "15 000 FCFA",
+                    image: "https://raw.githubusercontent.com/tdservices-tech/MaiShop/refs/heads/main/images/sac-noir-maishop~2.jpg",
+                    badge: null
+                },
+                {
+                    nom: "Sac Noir Tendance",
+                    prix: "15 000 FCFA",
+                    image: "https://raw.githubusercontent.com/tdservices-tech/MaiShop/refs/heads/main/images/sac-noir-tendance-maishop.jpg",
+                    badge: "Tendance"
+                },
+                {
+                    nom: "Sac R Blanc",
+                    prix: "14 000 FCFA",
+                    image: "https://raw.githubusercontent.com/tdservices-tech/MaiShop/refs/heads/main/images/sac-rblanc-maishop.jpg",
+                    badge: null
+                },
+                {
+                    nom: "Sac Rose",
+                    prix: "7 000 FCFA",
+                    image: "https://raw.githubusercontent.com/tdservices-tech/MaiShop/refs/heads/main/images/sac-rose-maishop.jpg",
+                    badge: "Promo"
+                },
+                {
+                    nom: "Sac Rouge",
+                    prix: "13 000 FCFA",
+                    image: "https://raw.githubusercontent.com/tdservices-tech/MaiShop/refs/heads/main/images/sac-rouge-maishop.jpg",
+                    badge: null
+                },
+                {
+                    nom: "Sac Rouge & Blanc",
+                    prix: "14 000 FCFA",
+                    image: "https://raw.githubusercontent.com/tdservices-tech/MaiShop/refs/heads/main/images/sac-rouge-blanc-maishop.jpg",
+                    badge: null
+                },
+                {
+                    nom: "Sac Violet",
+                    prix: "13 000 FCFA",
+                    image: "https://raw.githubusercontent.com/tdservices-tech/MaiShop/refs/heads/main/images/sac-violet-maishop.jpg",
+                    badge: null
+                },
+                {
+                    nom: "Sac à Main Rose",
+                    prix: "7 000 FCFA",
+                    image: "https://raw.githubusercontent.com/tdservices-tech/MaiShop/refs/heads/main/images/sac_a_main_rose~2.jpg",
+                    badge: "Promo"
+                },
+                {
+                    nom: "Sac Gris",
+                    prix: "15 000 FCFA",
+                    image: "https://raw.githubusercontent.com/tdservices-tech/MaiShop/refs/heads/main/images/sa-gris-maishop.jpg",
+                    badge: null
+                },
+                {
+                    nom: "Sac Tendance",
+                    prix: "15 000 FCFA",
+                    image: "https://raw.githubusercontent.com/tdservices-tech/MaiShop/refs/heads/main/images/sacs-tendance.jpg",
+                    badge: "Tendance"
+                },
+                // Photo modèle (boutique) – utilisée comme illustration
+                {
+                    nom: "Notre Boutique",
+                    prix: null,
+                    image: "https://raw.githubusercontent.com/tdservices-tech/MaiShop/refs/heads/main/images/boutique-maishop~2.jpg",
+                    badge: null
+                }
+            ];
 
-            let badgeHtml = '';
-            if (p.badge) {
-                badgeHtml = `<span class="badge">${p.badge}</span>`;
+            // ===== AFFICHAGE DES PRODUITS =====
+            const grid = document.getElementById('productsGrid');
+
+            produits.forEach(function(p) {
+                // Ignorer la boutique (affichée ailleurs)
+                if (p.nom === "Notre Boutique") return;
+
+                const card = document.createElement('div');
+                card.className = 'product-card';
+
+                let badgeHtml = '';
+                if (p.badge) {
+                    badgeHtml = `<span class="badge">${p.badge}</span>`;
+                }
+
+                card.innerHTML = `
+                    <div class="image-wrapper">
+                        <img src="${p.image}" alt="${p.nom}" loading="lazy">
+                        ${badgeHtml}
+                    </div>
+                    <h3>${p.nom}</h3>
+                    <span class="price">${p.prix}</span>
+                    <a href="https://wa.me/2250505228532?text=Je%20veux%20commander%20:%20${encodeURIComponent(p.nom)}" class="btn">
+                        <i class="fab fa-whatsapp"></i> Commander
+                    </a>
+                `;
+                grid.appendChild(card);
+            });
+
+            // ===== MENU MOBILE =====
+            const toggle = document.getElementById('menuToggle');
+            const navLinks = document.getElementById('navLinks');
+
+            if (toggle && navLinks) {
+                toggle.addEventListener('click', function() {
+                    const isOpen = navLinks.classList.toggle('open');
+                    toggle.setAttribute('aria-expanded', isOpen);
+                });
+
+                navLinks.querySelectorAll('a').forEach(function(link) {
+                    link.addEventListener('click', function() {
+                        navLinks.classList.remove('open');
+                        toggle.setAttribute('aria-expanded', 'false');
+                    });
+                });
             }
 
-            let oldPriceHtml = '';
-            if (p.ancienPrix) {
-                oldPriceHtml = `<span class="old">${p.ancienPrix}</span>`;
-            }
+            console.log('🛍️ MaiShop – 20 photos intégrées');
 
-            card.innerHTML = `
-                <img src="${p.image}" alt="${p.nom}" loading="lazy">
-                <h3>${p.nom}</h3>
-                <span class="price">${p.prix} ${oldPriceHtml}</span>
-                ${badgeHtml}
-                <a href="https://wa.me/2250505228532?text=Je%20veux%20commander%20:%20${encodeURIComponent(p.nom)}" class="btn">
-                    <i class="fab fa-whatsapp"></i> Commander
-                </a>
-            `;
-            grid.appendChild(card);
-        });
-
-        // ===== MENU MOBILE =====
-        const toggle = document.getElementById('menuToggle');
-        const navLinks = document.getElementById('navLinks');
-        toggle.addEventListener('click', function() {
-            navLinks.classList.toggle('open');
-        });
-
-        console.log('🛍️ MaiShop – 10 photos intégrées');
+        })();
     </script>
 
 </body>
