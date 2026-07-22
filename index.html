@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
-    <title>MaiShop – Sacs et accessoires tendance pour femmes</title>
-    <meta name="description" content="MaiShop : boutique en ligne de sacs tendance pour femmes à Abidjan. Sacs à main, pochettes, tote bags. Livraison à Abidjan et Côte d'Ivoire.">
+    <title>MaiShop – Sacs tendance pour femmes</title>
+    <meta name="description" content="MaiShop : boutique en ligne de sacs tendance pour femmes à Abidjan. Découvrez notre collection.">
     <link rel="canonical" href="https://tdservices-tech.github.io/MaiShop/">
 
     <!-- Open Graph -->
     <meta property="og:title" content="MaiShop – Sacs tendance pour femmes">
-    <meta property="og:description" content="Découvrez notre collection de sacs tendance. Livraison à Abidjan et Côte d'Ivoire.">
+    <meta property="og:description" content="Collection de sacs tendance. Livraison à Abidjan et Côte d'Ivoire.">
     <meta property="og:image" content="https://raw.githubusercontent.com/tdservices-tech/MaiShop/refs/heads/main/images/sac-fashion-maishop.jpg">
     <meta property="og:url" content="https://tdservices-tech.github.io/MaiShop/">
     <meta property="og:type" content="website">
@@ -35,7 +35,6 @@
             --gray-100: #f8f9fa;
             --gray-200: #e9ecef;
             --gray-300: #dee2e6;
-            --gray-400: #ced4da;
             --gray-500: #adb5bd;
             --gray-600: #6c757d;
             --white: #ffffff;
@@ -70,7 +69,6 @@
         .navbar {
             background: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
             border-bottom: 1px solid rgba(232, 67, 147, 0.08);
             padding: 14px 0;
             position: sticky;
@@ -95,10 +93,6 @@
 
         .logo span {
             color: var(--primary);
-        }
-
-        .logo .dot {
-            color: var(--accent);
         }
 
         .nav-links {
@@ -145,10 +139,6 @@
             font-size: 0.85rem;
             transition: var(--transition);
             box-shadow: 0 4px 16px rgba(232, 67, 147, 0.25);
-        }
-
-        .nav-btn::after {
-            display: none !important;
         }
 
         .nav-btn:hover {
@@ -236,11 +226,6 @@
             color: var(--gray-600);
             max-width: 500px;
             margin: 0.5rem auto 1.5rem;
-        }
-
-        .hero .subtitle span {
-            color: var(--primary);
-            font-weight: 600;
         }
 
         .hero-buttons {
@@ -756,69 +741,6 @@
             }
         }
 
-        /* ===== DARK MODE ===== */
-        @media (prefers-color-scheme: dark) {
-            :root {
-                --white: #1a1a2e;
-                --gray-100: #16213e;
-                --gray-200: #1e2a4a;
-                --gray-300: #2a3a5a;
-                --gray-400: #3a4a6a;
-                --gray-500: #7a8aaa;
-                --gray-600: #9aaaba;
-                --dark: #f0f0f0;
-                --shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
-                --shadow-hover: 0 12px 40px rgba(0, 0, 0, 0.4);
-            }
-
-            .navbar {
-                background: rgba(26, 26, 46, 0.95);
-                border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-            }
-
-            .hero {
-                background: linear-gradient(160deg, #1a1a2e, #16213e);
-            }
-
-            .products {
-                background: var(--gray-100);
-            }
-
-            .product-card {
-                background: var(--white);
-                border-color: var(--gray-200);
-            }
-
-            .contact {
-                background: var(--gray-100);
-            }
-
-            .contact-card {
-                background: var(--white);
-                border-color: var(--gray-200);
-            }
-
-            .whatsapp-cta {
-                background: linear-gradient(160deg, #1a1a2e, #16213e);
-            }
-
-            .footer {
-                background: #0a0a1a;
-            }
-
-            .btn-secondary {
-                background: transparent;
-                border-color: var(--gray-300);
-                color: var(--gray-600);
-            }
-
-            .btn-secondary:hover {
-                border-color: var(--primary);
-                color: var(--primary);
-            }
-        }
-
-        /* ===== ACCESSIBILITÉ ===== */
         @media (prefers-reduced-motion: reduce) {
 
             *,
@@ -837,7 +759,7 @@
     <!-- ===== NAVIGATION ===== -->
     <nav class="navbar">
         <div class="container">
-            <a href="#" class="logo">Mai<span>Shop</span><span class="dot">.</span></a>
+            <a href="#" class="logo">Mai<span>Shop</span></a>
 
             <button class="menu-toggle" id="menuToggle" aria-label="Menu" aria-expanded="false">
                 <span></span>
@@ -900,7 +822,7 @@
         </div>
     </section>
 
-    <!-- ===== CATALOGUE ===== -->
+    <!-- ===== CATALOGUE (UNIQUEMENT LES PRODUITS) ===== -->
     <section class="products" id="catalogue">
         <div class="container">
             <h2 class="section-title">Nos <span>sacs</span></h2>
@@ -944,7 +866,7 @@
     <section class="whatsapp-cta">
         <div class="container">
             <h2>Vous voulez commander ?</h2>
-            <p>Contactez-nous sur WhatsApp pour toute demande ou commande.</p>
+            <p>Contactez-nous sur WhatsApp pour toute demande.</p>
             <a href="https://wa.me/2250505228532" class="whatsapp-btn">💬 Commander sur WhatsApp</a>
         </div>
     </section>
@@ -985,7 +907,7 @@
     <!-- ===== FOOTER ===== -->
     <footer class="footer">
         <div class="container">
-            <a href="#" class="logo">Mai<span>Shop</span><span class="dot">.</span></a>
+            <a href="#" class="logo">Mai<span>Shop</span></a>
             <p>© 2025 MaiShop – Tous droits réservés</p>
             <p>
                 <a href="#">Accueil</a>
@@ -1015,140 +937,63 @@
         (function() {
             'use strict';
 
-            // ===== PRODUITS (20 PHOTOS AVEC PRIX) =====
-            const produits = [
+            // ===== PRODUITS UNIQUEMENT (10 PHOTOS AVEC PRIX) =====
+            const produits = [{
+                nom: "Sac Beige",
+                prix: "14 000 FCFA",
+                image: "https://raw.githubusercontent.com/tdservices-tech/MaiShop/refs/heads/main/images/sac-beige-maishop.jpg",
+                badge: null
+            }, {
+                nom: "Sac Beige 1",
+                prix: "14 000 FCFA",
+                image: "https://raw.githubusercontent.com/tdservices-tech/MaiShop/refs/heads/main/images/sac-beige1-maishop.jpg",
+                badge: null
+            }, {
+                nom: "Sac Blanc & Noir",
+                prix: "15 000 FCFA",
+                image: "https://raw.githubusercontent.com/tdservices-tech/MaiShop/refs/heads/main/images/sac-blanc-noir-maishop.jpg",
+                badge: null
+            }, {
+                nom: "Sac Bordeaux",
+                prix: "15 000 FCFA",
+                image: "https://raw.githubusercontent.com/tdservices-tech/MaiShop/refs/heads/main/images/sac-bordeaux-maishop.jpg",
+                badge: null
+            }, {
+                nom: "Sac Gris",
+                prix: "15 000 FCFA",
+                image: "https://raw.githubusercontent.com/tdservices-tech/MaiShop/refs/heads/main/images/sa-gris-maishop.jpg",
+                badge: null
+            }, {
+                nom: "Sac Noir",
+                prix: "15 000 FCFA",
+                image: "https://raw.githubusercontent.com/tdservices-tech/MaiShop/refs/heads/main/images/sac-noir-maishop~2.jpg",
+                badge: null
+            }, {
+                nom: "Sac à Main Rose",
+                prix: "7 000 FCFA",
+                image: "https://raw.githubusercontent.com/tdservices-tech/MaiShop/refs/heads/main/images/sac_a_main_rose~2.jpg",
+                badge: "Promo"
+            }, {
+                nom: "Sac Rose",
+                prix: "7 000 FCFA",
+                image: "https://raw.githubusercontent.com/tdservices-tech/MaiShop/refs/heads/main/images/sac-rose-maishop.jpg",
+                badge: "Promo"
+            }, {
+                nom: "Sac Rouge",
+                prix: "13 000 FCFA",
+                image: "https://raw.githubusercontent.com/tdservices-tech/MaiShop/refs/heads/main/images/sac-rouge-maishop.jpg",
+                badge: null
+            }, {
+                nom: "Sac Violet",
+                prix: "13 000 FCFA",
+                image: "https://raw.githubusercontent.com/tdservices-tech/MaiShop/refs/heads/main/images/sac-violet-maishop.jpg",
+                badge: null
+            }];
 
-                // Sacs avec prix
-                {
-                    nom: "Sac Beige",
-                    prix: "14 000 FCFA",
-                    image: "https://raw.githubusercontent.com/tdservices-tech/MaiShop/refs/heads/main/images/sac-beige-maishop.jpg",
-                    badge: null
-                },
-                {
-                    nom: "Sac Beige 1",
-                    prix: "14 000 FCFA",
-                    image: "https://raw.githubusercontent.com/tdservices-tech/MaiShop/refs/heads/main/images/sac-beige1-maishop.jpg",
-                    badge: null
-                },
-                {
-                    nom: "Sac Blanc & Noir",
-                    prix: "15 000 FCFA",
-                    image: "https://raw.githubusercontent.com/tdservices-tech/MaiShop/refs/heads/main/images/sac-blanc-noir-maishop.jpg",
-                    badge: null
-                },
-                {
-                    nom: "Sac Bordeaux",
-                    prix: "15 000 FCFA",
-                    image: "https://raw.githubusercontent.com/tdservices-tech/MaiShop/refs/heads/main/images/sac-bordeaux-maishop.jpg",
-                    badge: null
-                },
-                {
-                    nom: "Sac Chocolate",
-                    prix: "14 000 FCFA",
-                    image: "https://raw.githubusercontent.com/tdservices-tech/MaiShop/refs/heads/main/images/sac-chocolate-maishop.jpg",
-                    badge: null
-                },
-                {
-                    nom: "Sac Fashion",
-                    prix: "14 000 FCFA",
-                    image: "https://raw.githubusercontent.com/tdservices-tech/MaiShop/refs/heads/main/images/sac-fashion-maishop.jpg",
-                    badge: "Tendance"
-                },
-                {
-                    nom: "Sac Jaune",
-                    prix: "14 000 FCFA",
-                    image: "https://raw.githubusercontent.com/tdservices-tech/MaiShop/refs/heads/main/images/sac-jaune-maishop.jpg",
-                    badge: null
-                },
-                {
-                    nom: "Sac Marron",
-                    prix: "15 000 FCFA",
-                    image: "https://raw.githubusercontent.com/tdservices-tech/MaiShop/refs/heads/main/images/sac-marron-maishop.jpg",
-                    badge: null
-                },
-                {
-                    nom: "Sac Marron Clair",
-                    prix: "15 000 FCFA",
-                    image: "https://raw.githubusercontent.com/tdservices-tech/MaiShop/refs/heads/main/images/sac-marron-clair-maishop.jpg",
-                    badge: null
-                },
-                {
-                    nom: "Sac Noir",
-                    prix: "15 000 FCFA",
-                    image: "https://raw.githubusercontent.com/tdservices-tech/MaiShop/refs/heads/main/images/sac-noir-maishop~2.jpg",
-                    badge: null
-                },
-                {
-                    nom: "Sac Noir Tendance",
-                    prix: "15 000 FCFA",
-                    image: "https://raw.githubusercontent.com/tdservices-tech/MaiShop/refs/heads/main/images/sac-noir-tendance-maishop.jpg",
-                    badge: "Tendance"
-                },
-                {
-                    nom: "Sac R Blanc",
-                    prix: "14 000 FCFA",
-                    image: "https://raw.githubusercontent.com/tdservices-tech/MaiShop/refs/heads/main/images/sac-rblanc-maishop.jpg",
-                    badge: null
-                },
-                {
-                    nom: "Sac Rose",
-                    prix: "7 000 FCFA",
-                    image: "https://raw.githubusercontent.com/tdservices-tech/MaiShop/refs/heads/main/images/sac-rose-maishop.jpg",
-                    badge: "Promo"
-                },
-                {
-                    nom: "Sac Rouge",
-                    prix: "13 000 FCFA",
-                    image: "https://raw.githubusercontent.com/tdservices-tech/MaiShop/refs/heads/main/images/sac-rouge-maishop.jpg",
-                    badge: null
-                },
-                {
-                    nom: "Sac Rouge & Blanc",
-                    prix: "14 000 FCFA",
-                    image: "https://raw.githubusercontent.com/tdservices-tech/MaiShop/refs/heads/main/images/sac-rouge-blanc-maishop.jpg",
-                    badge: null
-                },
-                {
-                    nom: "Sac Violet",
-                    prix: "13 000 FCFA",
-                    image: "https://raw.githubusercontent.com/tdservices-tech/MaiShop/refs/heads/main/images/sac-violet-maishop.jpg",
-                    badge: null
-                },
-                {
-                    nom: "Sac à Main Rose",
-                    prix: "7 000 FCFA",
-                    image: "https://raw.githubusercontent.com/tdservices-tech/MaiShop/refs/heads/main/images/sac_a_main_rose~2.jpg",
-                    badge: "Promo"
-                },
-                {
-                    nom: "Sac Gris",
-                    prix: "15 000 FCFA",
-                    image: "https://raw.githubusercontent.com/tdservices-tech/MaiShop/refs/heads/main/images/sa-gris-maishop.jpg",
-                    badge: null
-                },
-                {
-                    nom: "Sac Tendance",
-                    prix: "15 000 FCFA",
-                    image: "https://raw.githubusercontent.com/tdservices-tech/MaiShop/refs/heads/main/images/sacs-tendance.jpg",
-                    badge: "Tendance"
-                },
-                // Photo modèle (boutique) – utilisée comme illustration
-                {
-                    nom: "Notre Boutique",
-                    prix: null,
-                    image: "https://raw.githubusercontent.com/tdservices-tech/MaiShop/refs/heads/main/images/boutique-maishop~2.jpg",
-                    badge: null
-                }
-            ];
-
-            // ===== AFFICHAGE DES PRODUITS =====
+            // ===== AFFICHAGE DU CATALOGUE =====
             const grid = document.getElementById('productsGrid');
 
             produits.forEach(function(p) {
-                // Ignorer la boutique (affichée ailleurs)
-                if (p.nom === "Notre Boutique") return;
-
                 const card = document.createElement('div');
                 card.className = 'product-card';
 
@@ -1189,7 +1034,7 @@
                 });
             }
 
-            console.log('🛍️ MaiShop – 20 photos intégrées');
+            console.log('🛍️ MaiShop – Catalogue chargé (10 produits)');
 
         })();
     </script>
