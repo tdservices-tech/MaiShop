@@ -1,0 +1,8 @@
+# robots.txt pour MaiShop
+# Permet à Google d'indexer toutes les pages
+
+User-agent: *
+Allow: /
+
+# Emplacement du sitemap
+Sitemap: https://mai-shop.vercel.app/sitemap.xml
