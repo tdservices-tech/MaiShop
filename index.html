@@ -560,18 +560,25 @@
             box-shadow: 0 12px 36px rgba(37, 211, 102, 0.4);
         }
 
-        /* ===== CONTACT ===== */
+        /* ===== CONTACT AVEC MAPS ===== */
         .contact {
-            padding: 40px 0;
+            padding: 50px 0;
             background: var(--white);
         }
 
         .contact-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 1.5rem;
-            max-width: 800px;
+            grid-template-columns: 1fr 1fr;
+            gap: 2.5rem;
+            max-width: 1000px;
             margin: 0 auto;
+            align-items: start;
+        }
+
+        .contact-info {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.2rem;
         }
 
         .contact-card {
@@ -589,28 +596,78 @@
         }
 
         .contact-card .icon {
-            font-size: 1.8rem;
+            font-size: 2rem;
             display: block;
             margin-bottom: 0.3rem;
         }
 
         .contact-card h4 {
-            font-size: 0.95rem;
+            font-size: 1rem;
             margin-bottom: 0.2rem;
+            color: var(--dark);
         }
 
         .contact-card p,
         .contact-card a {
             color: var(--gray-600);
             text-decoration: none;
-            font-size: 0.85rem;
+            font-size: 0.9rem;
         }
 
         .contact-card a:hover {
             color: var(--primary);
         }
 
-        /* ===== FOOTER AVEC RÉSEAUX SOCIAUX ===== */
+        .contact-card .itineraire-link {
+            display: inline-block;
+            margin-top: 0.5rem;
+            color: var(--primary);
+            font-weight: 600;
+            font-size: 0.9rem;
+            text-decoration: none;
+        }
+
+        .contact-card .itineraire-link:hover {
+            text-decoration: underline;
+        }
+
+        .contact-map {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .map-wrapper {
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            border: 1px solid var(--gray-200);
+            flex: 1;
+        }
+
+        .map-wrapper iframe {
+            display: block;
+            width: 100%;
+            height: 300px;
+            border: 0;
+        }
+
+        .map-link {
+            text-align: center;
+            margin-top: 0.8rem;
+            font-size: 0.9rem;
+        }
+
+        .map-link a {
+            color: var(--primary);
+            font-weight: 600;
+            text-decoration: none;
+        }
+
+        .map-link a:hover {
+            text-decoration: underline;
+        }
+
+        /* ===== FOOTER ===== */
         .footer {
             background: var(--dark);
             color: var(--gray-500);
@@ -743,7 +800,17 @@
             }
 
             .contact-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .contact-info {
                 grid-template-columns: 1fr 1fr;
+                gap: 0.8rem;
+            }
+
+            .map-wrapper iframe {
+                height: 220px;
             }
         }
 
@@ -787,8 +854,12 @@
                 grid-template-columns: 1fr;
             }
 
-            .contact-grid {
+            .contact-info {
                 grid-template-columns: 1fr;
+            }
+
+            .map-wrapper iframe {
+                height: 180px;
             }
 
             .why-grid {
@@ -842,7 +913,7 @@
     <!-- ===== HERO ===== -->
     <section class="hero">
         <div class="container">
-            <span class="hero-badge">✨ Nouvelle collection 2026</span>
+            <span class="hero-badge">✨ Nouvelle collection 2025</span>
             <h1>
                 <span class="highlight">MaiShop</span>
             </h1>
@@ -924,40 +995,73 @@
         </div>
     </section>
 
-    <!-- ===== CONTACT ===== -->
+    <!-- ===== CONTACT AVEC MAPS ===== -->
     <section class="contact" id="contact">
         <div class="container">
             <h2 class="section-title">📍 Nous <span>trouver</span></h2>
             <p class="section-subtitle">Retrouvez MaiShop à Abidjan.</p>
+
             <div class="contact-grid">
-                <div class="contact-card">
-                    <span class="icon">📍</span>
-                    <h4>Adresse</h4>
-                    <p>Abobo PK 18</p>
-                    <p>Carrefour Koffi Jean</p>
+
+                <!-- INFORMATIONS -->
+                <div class="contact-info">
+                    <div class="contact-card">
+                        <span class="icon">📍</span>
+                        <h4>Adresse</h4>
+                        <p>549 Rue Kadjo Aman</p>
+                        <p>Abidjan, Côte d'Ivoire</p>
+                        <a href="https://www.google.com/maps/dir//549+Rue+Kadjo+Aman+Abidjan" target="_blank" class="itineraire-link">
+                            🗺️ Obtenir l'itinéraire
+                        </a>
+                    </div>
+
+                    <div class="contact-card">
+                        <span class="icon">📞</span>
+                        <h4>Téléphone / WhatsApp</h4>
+                        <a href="https://wa.me/2250505228532">+225 05 05 22 85 32</a>
+                    </div>
+
+                    <div class="contact-card">
+                        <span class="icon">🕐</span>
+                        <h4>Horaires</h4>
+                        <p>Lun - Sam : 09:00 - 18:00</p>
+                        <p>Dimanche : Fermé</p>
+                    </div>
+
+                    <div class="contact-card">
+                        <span class="icon">📦</span>
+                        <h4>Livraison</h4>
+                        <p>Abidjan et Côte d'Ivoire</p>
+                        <p>24-48h</p>
+                    </div>
                 </div>
-                <div class="contact-card">
-                    <span class="icon">📞</span>
-                    <h4>Téléphone</h4>
-                    <a href="https://wa.me/2250505228532">+225 05 05 22 85 32</a>
+
+                <!-- GOOGLE MAPS -->
+                <div class="contact-map">
+                    <div class="map-wrapper">
+                        <iframe 
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3972.5!2d-4.0167!3d5.35!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNcKwMjEnMDAuMCJOIDTCsDAxJzAwLjAiVw!5e0!3m2!1sfr!2sci!4v1234567890"
+                            width="100%" 
+                            height="300" 
+                            style="border:0; border-radius:16px;" 
+                            allowfullscreen="" 
+                            loading="lazy" 
+                            referrerpolicy="no-referrer-when-downgrade"
+                            title="Carte Google Maps MaiShop">
+                        </iframe>
+                    </div>
+                    <div class="map-link">
+                        <a href="https://www.google.com/maps/dir//549+Rue+Kadjo+Aman+Abidjan" target="_blank">
+                            📍 Obtenir l'itinéraire vers MaiShop
+                        </a>
+                    </div>
                 </div>
-                <div class="contact-card">
-                    <span class="icon">🕐</span>
-                    <h4>Horaires</h4>
-                    <p>Lun - Sam : 09:00 - 18:00</p>
-                    <p>Dimanche : Fermé</p>
-                </div>
-                <div class="contact-card">
-                    <span class="icon">📦</span>
-                    <h4>Livraison</h4>
-                    <p>Abidjan et Côte d'Ivoire</p>
-                    <p>24-48h</p>
-                </div>
+
             </div>
         </div>
     </section>
 
-    <!-- ===== FOOTER AVEC RÉSEAUX SOCIAUX ===== -->
+    <!-- ===== FOOTER ===== -->
     <footer class="footer">
         <div class="container">
             <a href="#" class="logo">Mai<span>Shop</span></a>
