@@ -1,21 +1,74 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+    <!-- Page d'accueil -->
     <url>
         <loc>https://mai-shop.vercel.app/</loc>
-        <lastmod>2026-07-22</lastmod>
-        <changefreq>weekly</changefreq>
+        <lastmod>2026-08-07</lastmod>
+        <changefreq>daily</changefreq>
         <priority>1.0</priority>
     </url>
+
+    <!-- Catégories -->
     <url>
         <loc>https://mai-shop.vercel.app/#catalogue</loc>
-        <lastmod>2026-07-22</lastmod>
+        <lastmod>2026-08-07</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.9</priority>
+    </url>
+
+    <!-- Catégorie 7 000 FCFA -->
+    <url>
+        <loc>https://mai-shop.vercel.app/#categorie-7000</loc>
+        <lastmod>2026-08-07</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
+
+    <!-- Catégorie 13 000 FCFA -->
+    <url>
+        <loc>https://mai-shop.vercel.app/#categorie-13000</loc>
+        <lastmod>2026-08-07</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <!-- Catégorie 14 000 FCFA -->
+    <url>
+        <loc>https://mai-shop.vercel.app/#categorie-14000</loc>
+        <lastmod>2026-08-07</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <!-- Catégorie 15 000 FCFA -->
+    <url>
+        <loc>https://mai-shop.vercel.app/#categorie-15000</loc>
+        <lastmod>2026-08-07</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <!-- Catégorie 17 000 FCFA -->
+    <url>
+        <loc>https://mai-shop.vercel.app/#categorie-17000</loc>
+        <lastmod>2026-08-07</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <!-- Catégorie Promo & Nouveautés -->
+    <url>
+        <loc>https://mai-shop.vercel.app/#categorie-promo</loc>
+        <lastmod>2026-08-07</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <!-- Section Contact -->
     <url>
         <loc>https://mai-shop.vercel.app/#contact</loc>
-        <lastmod>2026-07-22</lastmod>
-        <changefreq>weekly</changefreq>
+        <lastmod>2026-08-07</lastmod>
+        <changefreq>monthly</changefreq>
         <priority>0.6</priority>
     </url>
 </urlset>
