@@ -17,7 +17,10 @@
     <!-- Google Search Console -->
     <meta name="google-site-verification" content="google73983434320d85cb.html" />
 
-    <!-- Font Awesome -->
+    <!-- SITEMAP -->
+    <link rel="sitemap" type="application/xml" href="https://mai-shop.vercel.app/sitemap.xml">
+
+    <!-- Font Awesome (version allégée) -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
     <style>
@@ -296,54 +299,63 @@
             transform: translateY(-3px);
         }
 
-        /* ===== CATÉGORIES ===== */
-        .categories {
-            padding: 40px 0;
+        /* ===== FILTRES PAR PRIX ===== */
+        .filters {
+            padding: 30px 0 10px;
             background: var(--white);
         }
 
-        .categories-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 1.5rem;
-            max-width: 500px;
-            margin: 1.5rem auto 0;
+        .filters-wrapper {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+            justify-content: center;
         }
 
-        .category-card {
-            background: var(--gray-100);
-            border-radius: var(--radius-sm);
-            padding: 1.5rem;
-            text-align: center;
-            transition: var(--transition);
-            border: 1px solid var(--gray-200);
-        }
-
-        .category-card:hover {
-            transform: translateY(-4px);
-            box-shadow: var(--shadow-hover);
-            border-color: var(--primary);
-        }
-
-        .category-card .icon {
-            font-size: 2.5rem;
-            display: block;
-            margin-bottom: 0.3rem;
-        }
-
-        .category-card h3 {
-            font-size: 1rem;
-            color: var(--dark);
-        }
-
-        .category-card p {
-            font-size: 0.85rem;
+        .filter-btn {
+            padding: 10px 24px;
+            border: 2px solid var(--gray-200);
+            border-radius: var(--radius-full);
+            background: var(--white);
             color: var(--gray-600);
+            font-weight: 700;
+            font-size: 0.85rem;
+            cursor: pointer;
+            transition: var(--transition);
+            text-decoration: none;
+        }
+
+        .filter-btn:hover {
+            border-color: var(--primary);
+            color: var(--primary);
+            transform: translateY(-2px);
+        }
+
+        .filter-btn.active {
+            background: var(--primary);
+            color: var(--white);
+            border-color: var(--primary);
+            box-shadow: 0 4px 16px rgba(232, 67, 147, 0.25);
+        }
+
+        .filter-btn .badge-count {
+            display: inline-block;
+            background: var(--gray-200);
+            color: var(--gray-600);
+            font-size: 0.7rem;
+            padding: 0 8px;
+            border-radius: var(--radius-full);
+            margin-left: 4px;
+        }
+
+        .filter-btn.active .badge-count {
+            background: rgba(255, 255, 255, 0.25);
+            color: var(--white);
         }
 
         /* ===== PRODUITS ===== */
         .products {
-            padding: 50px 0;
+            padding: 30px 0 50px;
             background: var(--white);
         }
 
@@ -442,6 +454,11 @@
             text-transform: uppercase;
         }
 
+        .product-card .badge-promo {
+            background: var(--accent);
+            color: var(--dark);
+        }
+
         .product-card h3 {
             font-size: 1rem;
             font-weight: 700;
@@ -476,6 +493,10 @@
             background: var(--primary-dark);
             transform: translateY(-2px);
             box-shadow: 0 4px 16px rgba(232, 67, 147, 0.3);
+        }
+
+        .product-card.hidden {
+            display: none;
         }
 
         /* ===== WHY ===== */
@@ -794,11 +815,6 @@
                 align-items: center;
             }
 
-            .categories-grid {
-                grid-template-columns: 1fr 1fr;
-                max-width: 100%;
-            }
-
             .contact-grid {
                 grid-template-columns: 1fr;
                 gap: 1.5rem;
@@ -811,6 +827,15 @@
 
             .map-wrapper iframe {
                 height: 220px;
+            }
+
+            .filters-wrapper {
+                gap: 0.5rem;
+            }
+
+            .filter-btn {
+                padding: 8px 16px;
+                font-size: 0.75rem;
             }
         }
 
@@ -850,10 +875,6 @@
                 font-size: 1.5rem;
             }
 
-            .categories-grid {
-                grid-template-columns: 1fr;
-            }
-
             .contact-info {
                 grid-template-columns: 1fr;
             }
@@ -873,6 +894,15 @@
                 width: 100%;
                 max-width: 240px;
                 justify-content: center;
+            }
+
+            .filters-wrapper {
+                gap: 0.4rem;
+            }
+
+            .filter-btn {
+                padding: 6px 12px;
+                font-size: 0.7rem;
             }
         }
 
@@ -927,29 +957,25 @@
         </div>
     </section>
 
-    <!-- ===== CATÉGORIES ===== -->
-    <section class="categories">
+    <!-- ===== FILTRES PAR PRIX ===== -->
+    <section class="filters" id="catalogue">
         <div class="container">
             <h2 class="section-title">Nos <span>catégories</span></h2>
-            <div class="categories-grid">
-                <div class="category-card">
-                    <span class="icon">👜</span>
-                    <h3>Sacs à main</h3>
-                    <p>Élégance au quotidien</p>
-                </div>
-                <div class="category-card">
-                    <span class="icon">👠</span>
-                    <h3>Chaussures</h3>
-                    <p>Style et confort pour chaque pas</p>
-                </div>
+            <div class="filters-wrapper" id="filterWrapper">
+                <button class="filter-btn active" data-filter="all">Tous <span class="badge-count">18</span></button>
+                <button class="filter-btn" data-filter="7000">👜 7 000 FCFA <span class="badge-count">1</span></button>
+                <button class="filter-btn" data-filter="13000">🆕 13 000 FCFA <span class="badge-count">1</span></button>
+                <button class="filter-btn" data-filter="14000">👠 14 000 FCFA <span class="badge-count">4</span></button>
+                <button class="filter-btn" data-filter="15000">👛 15 000 FCFA <span class="badge-count">4</span></button>
+                <button class="filter-btn" data-filter="17000">💎 17 000 FCFA <span class="badge-count">4</span></button>
+                <button class="filter-btn" data-filter="promo">🔥 Promo <span class="badge-count">4</span></button>
             </div>
         </div>
     </section>
 
     <!-- ===== CATALOGUE ===== -->
-    <section class="products" id="catalogue">
+    <section class="products">
         <div class="container">
-            <h2 class="section-title">Nos <span>sacs</span></h2>
             <p class="section-subtitle">Chaque modèle est sélectionné avec soin pour vous.</p>
             <div class="products-grid" id="productsGrid">
                 <!-- Généré par JavaScript -->
@@ -1091,73 +1117,184 @@
         (function() {
             'use strict';
 
-            // ===== 8 PRODUITS AVEC PRIX =====
-            const produits = [{
-                nom: "Sac à Main Rose",
-                prix: "7 000 FCFA",
-                image: "https://raw.githubusercontent.com/tdservices-tech/MaiShop/refs/heads/main/images/sac_a_main_rose~2.jpg",
-                badge: "Promo"
-            }, {
-                nom: "Sac Fashion",
-                prix: "13 000 FCFA",
-                image: "https://raw.githubusercontent.com/tdservices-tech/MaiShop/refs/heads/main/images/sac-fashion-maishop.jpg",
-                badge: null
-            }, {
-                nom: "Sac Jaune",
-                prix: "14 000 FCFA",
-                image: "https://raw.githubusercontent.com/tdservices-tech/MaiShop/refs/heads/main/images/sac-jaune-maishop.jpg",
-                badge: null
-            }, {
-                nom: "Sac Marron",
-                prix: "15 000 FCFA",
-                image: "https://raw.githubusercontent.com/tdservices-tech/MaiShop/refs/heads/main/images/sac-marron-maishop.jpg",
-                badge: null
-            }, {
-                nom: "Sac Marron Clair",
-                prix: "15 000 FCFA",
-                image: "https://raw.githubusercontent.com/tdservices-tech/MaiShop/refs/heads/main/images/sac-marron-clair-maishop.jpg",
-                badge: null
-            }, {
-                nom: "Sac Noir",
-                prix: "15 000 FCFA",
-                image: "https://raw.githubusercontent.com/tdservices-tech/MaiShop/refs/heads/main/images/sac-noir-maishop~2.jpg",
-                badge: null
-            }, {
-                nom: "Sac Noir Tendance",
-                prix: "15 000 FCFA",
-                image: "https://raw.githubusercontent.com/tdservices-tech/MaiShop/refs/heads/main/images/sac-noir-tendance-maishop.jpg",
-                badge: null
-            }, {
-                nom: "Sac Chocolate",
-                prix: "17 000 FCFA",
-                image: "https://raw.githubusercontent.com/tdservices-tech/MaiShop/refs/heads/main/images/sac-chocolate-maishop.jpg",
-                badge: "Premium"
-            }];
+            // ===== PRODUITS AVEC LEURS PRIX ET CATÉGORIES =====
+            const produits = [
+                // CATÉGORIE 7 000 FCFA (1 produit)
+                {
+                    nom: "Sac à Main Rose",
+                    prix: "7 000 FCFA",
+                    image: "https://raw.githubusercontent.com/tdservices-tech/MaiShop/refs/heads/main/images/sac_a_main_rose~2.jpg",
+                    badge: "Promo",
+                    categorie: "7000"
+                },
+                // CATÉGORIE 13 000 FCFA (1 produit)
+                {
+                    nom: "Sac Élégant",
+                    prix: "13 000 FCFA",
+                    image: "https://raw.githubusercontent.com/tdservices-tech/MaiShop/refs/heads/main/images/sac-13000-1.jpg",
+                    badge: null,
+                    categorie: "13000"
+                },
+                // CATÉGORIE 14 000 FCFA (4 produits)
+                {
+                    nom: "Sac Tendance 1",
+                    prix: "14 000 FCFA",
+                    image: "https://raw.githubusercontent.com/tdservices-tech/MaiShop/refs/heads/main/images/sac-14000-1.jpg",
+                    badge: null,
+                    categorie: "14000"
+                },
+                {
+                    nom: "Sac Tendance 2",
+                    prix: "14 000 FCFA",
+                    image: "https://raw.githubusercontent.com/tdservices-tech/MaiShop/refs/heads/main/images/sac-14000-2.jpg",
+                    badge: null,
+                    categorie: "14000"
+                },
+                {
+                    nom: "Sac Tendance 3",
+                    prix: "14 000 FCFA",
+                    image: "https://raw.githubusercontent.com/tdservices-tech/MaiShop/refs/heads/main/images/sac-14000-3.jpg",
+                    badge: null,
+                    categorie: "14000"
+                },
+                {
+                    nom: "Sac Tendance 4",
+                    prix: "14 000 FCFA",
+                    image: "https://raw.githubusercontent.com/tdservices-tech/MaiShop/refs/heads/main/images/sac-14000-4.jpg",
+                    badge: null,
+                    categorie: "14000"
+                },
+                // CATÉGORIE 15 000 FCFA (4 produits)
+                {
+                    nom: "Sac Chic 1",
+                    prix: "15 000 FCFA",
+                    image: "https://raw.githubusercontent.com/tdservices-tech/MaiShop/refs/heads/main/images/sac-15000-1.jpg",
+                    badge: null,
+                    categorie: "15000"
+                },
+                {
+                    nom: "Sac Chic 2",
+                    prix: "15 000 FCFA",
+                    image: "https://raw.githubusercontent.com/tdservices-tech/MaiShop/refs/heads/main/images/sac-15000-2.jpg",
+                    badge: null,
+                    categorie: "15000"
+                },
+                {
+                    nom: "Sac Chic 3",
+                    prix: "15 000 FCFA",
+                    image: "https://raw.githubusercontent.com/tdservices-tech/MaiShop/refs/heads/main/images/sac-noir-tendance-maishop.jpg",
+                    badge: null,
+                    categorie: "15000"
+                },
+                {
+                    nom: "Sac Chic 4",
+                    prix: "15 000 FCFA",
+                    image: "https://raw.githubusercontent.com/tdservices-tech/MaiShop/refs/heads/main/images/sac-chocolate-maishop.jpg",
+                    badge: null,
+                    categorie: "15000"
+                },
+                // CATÉGORIE 17 000 FCFA (4 produits)
+                {
+                    nom: "Sac Premium 1",
+                    prix: "17 000 FCFA",
+                    image: "https://raw.githubusercontent.com/tdservices-tech/MaiShop/refs/heads/main/images/sac-17000-1.jpg",
+                    badge: "Premium",
+                    categorie: "17000"
+                },
+                {
+                    nom: "Sac Premium 2",
+                    prix: "17 000 FCFA",
+                    image: "https://raw.githubusercontent.com/tdservices-tech/MaiShop/refs/heads/main/images/sac-17000-2.jpg",
+                    badge: null,
+                    categorie: "17000"
+                },
+                {
+                    nom: "Sac Premium 3",
+                    prix: "17 000 FCFA",
+                    image: "https://raw.githubusercontent.com/tdservices-tech/MaiShop/refs/heads/main/images/sac-17000-3.jpg",
+                    badge: null,
+                    categorie: "17000"
+                },
+                {
+                    nom: "Sac Premium 4",
+                    prix: "17 000 FCFA",
+                    image: "https://raw.githubusercontent.com/tdservices-tech/MaiShop/refs/heads/main/images/sac-17000-4.jpg",
+                    badge: null,
+                    categorie: "17000"
+                },
+                // CATÉGORIE PROMO & NOUVEAUTÉS (4 produits)
+                {
+                    nom: "Promo 1",
+                    prix: "À partir de 7 000 FCFA",
+                    image: "https://raw.githubusercontent.com/tdservices-tech/MaiShop/refs/heads/main/images/sac-partir-a-partir-de-7000-2.jpg",
+                    badge: "Promo",
+                    categorie: "promo"
+                },
+                {
+                    nom: "Promo 2",
+                    prix: "À partir de 7 000 FCFA",
+                    image: "https://raw.githubusercontent.com/tdservices-tech/MaiShop/refs/heads/main/images/sac-noir-tendance-maishop.jpg",
+                    badge: "Promo",
+                    categorie: "promo"
+                },
+                {
+                    nom: "Promo 3",
+                    prix: "À partir de 7 000 FCFA",
+                    image: "https://raw.githubusercontent.com/tdservices-tech/MaiShop/refs/heads/main/images/sac-bordeaux-maishop.jpg",
+                    badge: "Promo",
+                    categorie: "promo"
+                },
+                {
+                    nom: "Promo 4",
+                    prix: "À partir de 7 000 FCFA",
+                    image: "https://raw.githubusercontent.com/tdservices-tech/MaiShop/refs/heads/main/images/sac-fashion-maishop.jpg",
+                    badge: "Promo",
+                    categorie: "promo"
+                }
+            ];
 
             // ===== AFFICHAGE DU CATALOGUE =====
             const grid = document.getElementById('productsGrid');
 
-            produits.forEach(function(p) {
-                const card = document.createElement('div');
-                card.className = 'product-card';
+            function renderProduits(filtre) {
+                grid.innerHTML = '';
+                const filtered = filtre === 'all' ? produits : produits.filter(p => p.categorie === filtre);
 
-                let badgeHtml = '';
-                if (p.badge) {
-                    badgeHtml = `<span class="badge">${p.badge}</span>`;
-                }
+                filtered.forEach(function(p) {
+                    const card = document.createElement('div');
+                    card.className = 'product-card';
 
-                card.innerHTML = `
-                    <div class="image-wrapper">
-                        <img src="${p.image}" alt="${p.nom}" loading="lazy">
-                        ${badgeHtml}
-                    </div>
-                    <h3>${p.nom}</h3>
-                    <span class="price">${p.prix}</span>
-                    <a href="https://wa.me/2250505228532?text=Je%20veux%20commander%20:%20${encodeURIComponent(p.nom)}" class="btn">
-                        <i class="fab fa-whatsapp"></i> Commander
-                    </a>
-                `;
-                grid.appendChild(card);
+                    let badgeHtml = '';
+                    if (p.badge) {
+                        const badgeClass = p.badge === 'Promo' ? 'badge-promo' : '';
+                        badgeHtml = `<span class="badge ${badgeClass}">${p.badge}</span>`;
+                    }
+
+                    card.innerHTML = `
+                        <div class="image-wrapper">
+                            <img src="${p.image}" alt="${p.nom}" loading="lazy" width="400" height="250">
+                            ${badgeHtml}
+                        </div>
+                        <h3>${p.nom}</h3>
+                        <span class="price">${p.prix}</span>
+                        <a href="https://wa.me/2250505228532?text=Je%20veux%20commander%20:%20${encodeURIComponent(p.nom)}%20(${encodeURIComponent(p.prix)})" class="btn">
+                            <i class="fab fa-whatsapp"></i> Commander
+                        </a>
+                    `;
+                    grid.appendChild(card);
+                });
+            }
+
+            // ===== FILTRES =====
+            const filterBtns = document.querySelectorAll('.filter-btn');
+
+            filterBtns.forEach(function(btn) {
+                btn.addEventListener('click', function() {
+                    filterBtns.forEach(b => b.classList.remove('active'));
+                    this.classList.add('active');
+                    const filter = this.dataset.filter;
+                    renderProduits(filter);
+                });
             });
 
             // ===== MENU MOBILE =====
@@ -1178,7 +1315,10 @@
                 });
             }
 
-            console.log('🛍️ MaiShop – Catalogue chargé (8 produits)');
+            // ===== INIT =====
+            renderProduits('all');
+
+            console.log('🛍️ MaiShop – Catalogue chargé (' + produits.length + ' produits)');
 
         })();
     </script>
